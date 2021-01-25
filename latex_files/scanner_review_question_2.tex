@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usetikzlibrary{automata,positioning}
+\begin{document}
+
+\begin{adjustbox}{width=16cm, height=12cm, keepaspectratio}
+    \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto] 
+        \node[state,initial] (s_0)   {$s_0$}; 
+        \node[state,accepting] (s_1) [above right=of s_0] {$s_1$}; 
+        \node[state,] (s_3) [right=of s_1] {$s_3$}; 
+         \path[->] 
+         (s_0) edge node {",'} (s_1)
+        
+         (s_1) edge [bend left, above] node{a...z,A...Z,0...9} (s_3)
+         (s_3) edge [bend left, below] node {", ' } (s_1)
+         (s_3) edge[loop right] node {a...z,A...Z,0...9} (s_3);
+     \end{tikzpicture}
+\end{adjustbox}%
+
+\end{document}
